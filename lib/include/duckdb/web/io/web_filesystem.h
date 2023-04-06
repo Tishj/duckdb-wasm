@@ -12,6 +12,7 @@
 #include "arrow/status.h"
 #include "duckdb/common/constants.hpp"
 #include "duckdb/common/file_system.hpp"
+#include "duckdb/common/vector.hpp"
 #include "duckdb/web/config.h"
 #include "duckdb/web/io/file_stats.h"
 #include "duckdb/web/io/readahead_buffer.h"
@@ -267,7 +268,7 @@ class WebFileSystem : public duckdb::FileSystem {
     void FileSync(duckdb::FileHandle &handle) override;
 
     /// Runs a glob on the file system, returning a list of matching files
-    std::vector<std::string> Glob(const std::string &path, FileOpener *opener = nullptr) override;
+    vector<std::string> Glob(const std::string &path, FileOpener *opener = nullptr) override;
 
     /// Set the file pointer of a file handle to a specified location. Reads and writes will happen from this location
     void Seek(FileHandle &handle, idx_t location) override;
